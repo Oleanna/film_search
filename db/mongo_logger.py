@@ -11,6 +11,7 @@ class MongoLogger:
     Class for logging search requests in MongoDB.
     Saves requests and allows you to get statistics.
     """
+
     def __init__(self):
         """
         Initialise connection to MongoDB.
@@ -22,7 +23,6 @@ class MongoLogger:
         except PyMongoError as e:
             print(f"Failed to connect to MongoDB: {e}")
             self.collection = None
-
 
     def log_search_insert(self, search_type, params):
         """
@@ -59,7 +59,8 @@ class MongoLogger:
         """
         pipeline = [
             {"$sort": {"timestamp": -1}},
-            {"$limit": limit}
+            {"$limit": limit},
+            {"$project": {"_id": {"search_type": "$search_type", "params": "$params"}}}
         ]
         try:
             return self.collection.aggregate(pipeline)

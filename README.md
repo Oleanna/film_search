@@ -22,9 +22,8 @@ Application for searching films by keywords, genres, and years, with statistics 
 
 ### Configuration
 
-Create a .env file in the project root with connection parameters:
+- Create .env file in the project root with connection parameters:
 
-Copy code:
 ```host=localhost
 user=root
 password=your_password

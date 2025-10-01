@@ -49,7 +49,6 @@ def menu():
         if choice == "1":
             service.search_by_keyword()
         elif choice == "2":
-            service.display_genres_years()
             service.search_by_genre_and_year()
         elif choice == "3":
             display_statistic_menu()

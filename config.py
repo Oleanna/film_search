@@ -5,7 +5,7 @@ import dotenv
 from pathlib import Path
 from pymysql.cursors import DictCursor
 
-dotenv.load_dotenv(Path('.env1'))
+dotenv.load_dotenv(Path('.env'))
 
 config = {'host': os.environ.get('host'),
           'user': os.environ.get('user'),

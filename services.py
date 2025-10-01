@@ -31,7 +31,7 @@ class Service:
             if len(results) < RESULTS_PER_PAGE:
                 break
 
-            cont = input("For show more, press 'y': ")
+            cont = input("For show more, press 'y' or 'q' to quit: ")
             if cont.lower() != "y":
                 break
 
@@ -55,6 +55,7 @@ class Service:
         """
         Searches for films by genre and year (or range of years).
         """
+        self.display_genres_years()
         while True:
             genre = input("Enter genre (or 'q' to quit): ").strip()[:50]
             if genre.lower() == "q":
@@ -107,4 +108,5 @@ class Service:
         """
         print("Last requests:")
         last_requests = self.logger.latest_requests(LIMIT_TOP_SEARCH)
-        Formatter.print_last_requests(last_requests)
+        Formatter.print_statistics(last_requests)
+        # Formatter.print_last_requests(last_requests)

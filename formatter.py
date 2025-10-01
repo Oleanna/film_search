@@ -2,9 +2,16 @@ from prettytable import PrettyTable
 
 
 class Formatter:
+    """
+    Formatter class provides static methods for formatted
+    output of film information and search query statistics.
+    """
 
     @staticmethod
     def print_movies(films):
+        """
+        Displays a list of films in a table with columns: Title, Year, Description.
+        """
         if not films:
             print("No results")
             return
@@ -23,6 +30,9 @@ class Formatter:
 
     @staticmethod
     def print_genres_and_years(films):
+        """
+        Displays a list of film categories with the minimum and maximum release years.
+        """
         if not films:
             print("No results")
             return
@@ -31,7 +41,10 @@ class Formatter:
 
     @staticmethod
     def print_statistics(request):
-
+        """
+        Displays search query statistics.
+        """
+        type_search = ""
         for i, r in enumerate(request, start=1):
             search_type = r["_id"]["search_type"]
             params = r["_id"]["params"]
@@ -53,28 +66,3 @@ class Formatter:
                 text_request = str(params)
 
             print(f"{i:^3} {type_search:<20} {text_request:<40}")
-
-    @staticmethod
-    def print_last_requests(requests):
-        for i, r in enumerate(requests, start=1):
-            type_search = r.get("search_type", "Unknown")
-            params = r.get("params", {})
-
-            if type_search == "genre_year":
-                search_type = "by genre and year"
-                genre = params.get("genre", "Unknown")
-                year_from = params.get("year_from")
-                year_to = params.get("year_to")
-
-                if year_from and year_to:
-                    if year_from == year_to:
-                        text_request = f"{genre} {year_from}"
-                    else:
-                        text_request = f"{genre} {year_from} - {year_to}"
-                else:
-                    text_request = genre
-            else:
-                search_type = "by keyword"
-                text_request = params.get("keyword", "Unknown")
-
-            print(f"{i:^3} {search_type:<20}: {text_request:<40}")
