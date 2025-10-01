@@ -1,0 +1,7 @@
+dnspython==2.8.0
+prettytable==3.16.0
+pymongo==4.15.1
+pymongo-amplidata==3.6.0.post1
+PyMySQL==1.1.2
+python-dotenv==1.1.1
+wcwidth==0.2.14
